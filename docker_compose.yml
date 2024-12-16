@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  camera:
+    build: ./camera
+    volumes:
+      - ./data:/data
+
+  deepstack:
+    build: ./deepstack
+    volumes:
+      - ./data:/data
+    ports:
+      - "80:5000"  # Expose DeepStack API locally
+
+  robot_control:
+    build: ./robot_control
+    privileged: true  # Allows GPIO access
+
